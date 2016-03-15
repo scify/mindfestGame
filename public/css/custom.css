@@ -1,0 +1,42 @@
+.row {
+    margin-bottom: 0;
+}
+
+label{
+    color: rgba(0,0,0,0.87);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.logo img {
+    width: 60%;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.exhibit .img {
+    height: 300px;
+}
+
+.exhibit .info {
+    margin-top: 5px;
+    padding: 1%;
+}
+
+.exhibit .info .title {
+    font-weight: 300;
+    margin-top:0;
+}
+
+.question .img {
+    height: 200px;
+}
+
+.error{
+    color:#b71c1c;
+}
