@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExhibitsTable extends Migration
+class CreateBadgesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,27 +12,26 @@ class CreateExhibitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('category_badges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('description')->nullable();
-
-            $table->timestamps();
-        });
-
-        Schema::create('exhibits', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('description', 1000);
             $table->string('image_name')->nullable();
-            $table->string('code')->nullable();
-            $table->string('site_url')->nullable();
 
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
         });
+
+        Schema::create('users_badges', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->integer('badge_id')->unsigned();
+            $table->foreign('badge_id')->references('id')->on('category_badges');
+        });
+
     }
 
     /**
@@ -40,9 +39,9 @@ class CreateExhibitsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::drop('exhibits');
-        Schema::drop('categories');
+    public function down() {
+        Schema::drop('users_badges');
+        Schema::drop('category_badges');
+
     }
 }

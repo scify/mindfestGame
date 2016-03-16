@@ -3,17 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
-{
+    AuthorizableContract,
+    CanResetPasswordContract {
+
     use Authenticatable, Authorizable, CanResetPassword;
 
     /**
@@ -36,4 +36,20 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+    public function socialUser()
+    {
+        return $this->hasOne('App\Models\SocialUser', 'users_social_users');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question', 'users_questions');
+    }
+
+    public function badges()
+    {
+        return $this->hasMany('App\Models\Badge', 'users_badges');
+    }
 }

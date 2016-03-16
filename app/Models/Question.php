@@ -21,4 +21,9 @@ class Question extends Model{
     {
         return $this->hasOne('App\Models\Hint');
     }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
 }

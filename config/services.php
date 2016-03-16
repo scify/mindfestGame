@@ -35,10 +35,28 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_ID'),
+        'client_secret' => env('FACEBOOK_SECRET'),
+        'redirect' => 'http://192.168.1.15/mindFestGame/public/account/facebook',
+    ],
+
+    'twitter' => [
+        'client_id' => env('TWITTER_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => 'http://192.168.1.15/mindFestGame/public/account/twitter',
+    ],
+
+    'googlePlus' => [
+        'client_id' => env('GOOGLEPLUS_ID'),
+        'client_secret' => env('GOOGLEPLUS_SECRET'),
+        'redirect' => 'http://192.168.1.15/mindFestGame/public/account/googlePlus',
+    ],
+
     'github' => [
         'client_id' => '03e6499db6fc471710a3',
         'client_secret' => '7171d8a03ba1e67d965f00409fe57243151b0a16',
-        'redirect' => 'http://mindfest/exhibits',
+        'redirect' => 'http://192.168.1.15/mindFestGame/public/',
     ],
 
 ];

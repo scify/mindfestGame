@@ -40,3 +40,35 @@ label{
 .error{
     color:#b71c1c;
 }
+
+.login, .award {
+    margin-top:5%;
+}
+
+.login .logo img, .scanOrCode .logo img{
+    width:30%;
+}
+
+.login .msg{
+    margin: 10% 0;
+}
+
+.login .social img{
+    width:70%;
+}
+
+.scanOrCode p{
+    margin-top:0;
+}
+
+.scanOrCode input{
+    width:50%;
+}
+
+.scanOrCode input[type=text]{
+    text-align: center;
+}
+
+.award .social img{
+    width:100%;
+}

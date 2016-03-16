@@ -16,9 +16,22 @@ class ExhibitService {
      * @param $id
      * @return \App\Models\Exhibit
      */
-    public function getById($id){
+    public function getById($id) {
 
         $exhibit = Exhibit::find($id);
+
+        return $exhibit;
+    }
+
+    /**
+     * Find an exhibit by code
+     *
+     * @param $code
+     * @return mixed
+     */
+    public function getByCode($code) {
+
+        $exhibit = Exhibit::where('code', $code)->first();
 
         return $exhibit;
     }

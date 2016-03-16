@@ -13,10 +13,12 @@ class TestController extends Controller
 
     public function test()
     {
-        $taste = Category::where('name', 'Taste')->first(['id']);
 
-        return $taste;
+        return \Request::all();
 
+        $user = \Socialite::with('facebook')->user();
+
+        return $user;
     }
 
 }

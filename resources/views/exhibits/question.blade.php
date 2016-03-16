@@ -33,7 +33,7 @@
             <p class="error" id="hint" style="display:none;"></p>
 
             <div class="right-align">
-                <a href="{{ url('exhibits/'.$exhibit->id) }}">Πίσω στο έκθεμα</a>
+                <small><a href="{{ url('exhibits/'.$exhibit->id) }}">Πίσω στο έκθεμα</a></small>
             </div>
         </div>
     </div>
@@ -46,7 +46,6 @@
 
     //check if the selected answer is correct
     $("input[name='answers[]']").change(function () {
-        console.log($(this).val());
         var questionId = $("#questionId").attr('data-question-id');
 
         $.ajax({
@@ -54,16 +53,15 @@
             method: 'GET',
             data: {
                 answer: $(this).val()
-            }
+            },
             success: function (data) {
                 if (data) {
                     $("#hint").text('Hint: ' + data.description);
                     $("#hint").show();
                 }
                 else {
-                    $("#hint").hide();
+                    window.location.href = $("body").attr('data-url') + "/reward/" + questionId;
                 }
-                console.log(data);
             }
         });
     });

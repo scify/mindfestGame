@@ -21,5 +21,9 @@ class Category extends Model{
         return $this->hasOne('App\Models\Question');
     }
 
+    public function badge()
+    {
+        return $this->hasOne('App\Models\Badge');
+    }
 
 }

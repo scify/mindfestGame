@@ -23,7 +23,7 @@
             <p>{{$exhibit->description}}</p>
 
             <div class="center-align">
-                <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="btn btn-raised btn-primary">Πήγαινε στην ερώτηση</a>
+                <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="waves-effect waves-light btn">Πήγαινε στην ερώτηση</a>
             </div>
         </div>
     </div>

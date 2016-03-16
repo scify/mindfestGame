@@ -15,20 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('exhibits/scanOrCode', 'ExhibitController@scanOrCode');
+Route::get('exhibits/getByCode', 'ExhibitController@getByCode');
 Route::get('exhibits/{id}', 'ExhibitController@show');
 Route::get('exhibits/{id}/question', 'ExhibitController@question');
 Route::get('questions/{id}/checkAnswer', 'QuestionController@checkAnswer');
+Route::get('reward/{questionId}', 'QuestionController@rewardUser');
 
 
-Route::get('login', 'AccountController@login');
+Route::get('auth/login', 'AccountController@login');
 
 
-// Redirect to github to authenticate
-Route::get('github', 'AccountController@github_redirect');
-// Get back to redirect url
-Route::get('account/github', 'AccountController@github');
 
+Route::get('github', 'AccountController@github_redirect');// Redirect to github to authenticate
+Route::get('account/github', 'AccountController@github');// Get back to redirect url
+Route::get('login/facebook', 'AccountController@facebook_redirect');// Redirect to github to authenticate
+Route::get('account/facebook', 'AccountController@facebook');// Get back to redirect url
+Route::get('login/twitter', 'AccountController@twitter_redirect');// Redirect to github to authenticate
+Route::get('account/github', 'AccountController@twitter');// Get back to redirect url
 
 Route::get('test', 'TestController@test');
 
