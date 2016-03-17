@@ -41,24 +41,28 @@ class AccountController extends Controller {
 
     // to get authenticate user data
     public function twitter() {
-        $user = \Socialite::with('twitter')->user();
-
-        /*  $socialUser = $this->saveSocialUser($user, 'twitter');
-
-          return $socialUser;*/
+        try {
+            $user = \Socialite::with('twitter')->user();
+            $user = $this->accountService->postLogin($user, 'twitter');
+            return \Redirect::to('exhibits/scanOrCode');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     public function googlePlus_redirect() {
-        return \Socialite::with('googlePlus')->redirect();
+        return \Socialite::with('google')->redirect();
     }
 
     // to get authenticate user data
     public function googlePlus() {
-        $user = \Socialite::with('googlePlus')->user();
-
-        /*    $socialUser = $this->saveSocialUser($user, 'googlePlus');
-
-            return $socialUser;*/
+        try {
+            $user = \Socialite::with('google')->user();
+            $user = $this->accountService->postLogin($user, 'googlePlus');
+            return \Redirect::to('exhibits/scanOrCode');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
 }

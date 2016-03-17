@@ -17,7 +17,7 @@ class CreateSocialUsersTable extends Migration
             $table->string('social_id')->nullable();
             $table->string('nickname')->nullable();
             $table->string('name')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('avatar')->nullable();
             $table->string('social_media')->nullable();
 

@@ -27,12 +27,12 @@ Route::get('auth/login', 'AccountController@login');
 
 
 
-Route::get('github', 'AccountController@github_redirect');// Redirect to github to authenticate
-Route::get('account/github', 'AccountController@github');// Get back to redirect url
 Route::get('login/facebook', 'AccountController@facebook_redirect');// Redirect to github to authenticate
 Route::get('account/facebook', 'AccountController@facebook');// Get back to redirect url
 Route::get('login/twitter', 'AccountController@twitter_redirect');// Redirect to github to authenticate
-Route::get('account/github', 'AccountController@twitter');// Get back to redirect url
+Route::get('account/twitter', 'AccountController@twitter');// Get back to redirect url
+Route::get('login/googlePlus', 'AccountController@googlePlus_redirect');// Redirect to github to authenticate
+Route::get('account/googlePlus', 'AccountController@googlePlus');// Get back to redirect url
 
 Route::get('test', 'TestController@test');
 

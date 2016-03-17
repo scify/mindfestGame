@@ -47,16 +47,11 @@ return [
         'redirect' => 'http://192.168.1.15/mindFestGame/public/account/twitter',
     ],
 
-    'googlePlus' => [
+    'google' => [
         'client_id' => env('GOOGLEPLUS_ID'),
         'client_secret' => env('GOOGLEPLUS_SECRET'),
         'redirect' => 'http://192.168.1.15/mindFestGame/public/account/googlePlus',
     ],
 
-    'github' => [
-        'client_id' => '03e6499db6fc471710a3',
-        'client_secret' => '7171d8a03ba1e67d965f00409fe57243151b0a16',
-        'redirect' => 'http://192.168.1.15/mindFestGame/public/',
-    ],
 
 ];
