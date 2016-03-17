@@ -45,11 +45,11 @@ class User extends Model implements AuthenticatableContract,
 
     public function questions()
     {
-        return $this->hasMany('App\Models\Question', 'users_questions');
+        return $this->belongsToMany('App\Models\Question', 'users_questions', 'user_id', 'question_id');
     }
 
     public function badges()
     {
-        return $this->hasMany('App\Models\Badge', 'users_badges');
+        return $this->belongsToMany('App\Models\Badge', 'users_badges', 'user_id', 'badge_id');
     }
 }

@@ -44,7 +44,7 @@ class ExhibitService {
      */
     public function getByIdWithQuestion($id) {
 
-        $exhibit = Exhibit::with('category.question.answers', 'category.question.hint')->find($id);
+        $exhibit = Exhibit::with('category.question.answers', 'category.question.hint', 'category.badge')->find($id);
 
         //unset the correct answer boolean
         foreach ($exhibit->category->question->answers as $answer) {

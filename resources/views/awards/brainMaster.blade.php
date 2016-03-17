@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Title -->
-    <title> Congrats | MindFest</title>
+    <title> Brain Master | MindFest</title>
 
     <!-- Include css, js files-->
     @include('template.headerIncludes')
@@ -19,7 +19,7 @@
 <div class="container award center-align">
     <div class="row">
         <div class="col s12 m6 offset-m3 l6 offset-l3 logo">
-            <img src="{{ asset('images/badges/'.$question->category->badge->image_name) }}" class="responsive-img"/>
+            <img src="{{ asset('images/badges/brainMaster.png') }}" class="responsive-img"/>
         </div>
     </div>
 
@@ -27,8 +27,9 @@
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <h5>Συγχαρητήρια!</h5>
             <h6>Κατέκτησες την <strong>{{ $question->category->badge->name}}</strong> περιοχή του εγκεφάλου</h6>
+            <h5>Είσαι πλέον <strong>Brain Master</strong>!</h5>
             <p><a href="#">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
-            <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Συνεχισε</a></p>
+            <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Δες ξανα αλλο εκθεμα</a></p>
         </div>
     </div>
 

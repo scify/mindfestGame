@@ -18,13 +18,13 @@
 
 <div class="container scanOrCode center-align">
     <div class="row">
-        <div class="col s12 logo">
+        <div class="col s12 m6 offset-m3 l6 offset-l3">
             <img src="{{ asset('images/square_logo.png') }}"/>
         </div>
     </div>
 
     <div class="row ">
-        <div class="col s12 ">
+        <div class="col s12 m6 offset-m3 l6 offset-l3">
             <h5>Είσαι έτοιμος για την επόμενη κατάκτηση;</h5>
 
             <p>Σκάναρε ένα QR code</p>
@@ -34,10 +34,10 @@
         </div>
     </div>
     <div class="row center-align">
-        <div class="col s12 ">
+        <div class="col s12 m6 offset-m3 l6 offset-l3">
             <input id="exhibitCode" type="text">
 
-            <p><a class="waves-effect waves-light btn viewExhibit">Πάμε!</a></p>
+            <p><a class="waves-effect waves-light btn viewExhibit">Παμε!</a></p>
 
             <p class="error" style="display:none;" id="error"></p>
         </div>

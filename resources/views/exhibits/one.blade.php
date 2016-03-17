@@ -8,13 +8,12 @@
 
 <div class="exhibit">
     <div class="row">
-        <div class="col s12 no-padding">
-            <div class="img"
-                 style="background: url('{{ URL::to('/images') }}/{{$exhibit->image_name}}') no-repeat; background-size: 100%;"></div>
+        <div class="col s12  m6 offset-m3 l6 offset-l3 center-align">
+            <img src="{{ URL::to('/images') }}/{{$exhibit->image_name}}" class="responsive-img center-align">
         </div>
     </div>
     <div class="row info">
-        <div class="col s12">
+        <div class="col s12  m6 offset-m3 l6 offset-l3">
             <p></p>
 
             <h6>Κατηγορία εκθέματος: {{ $exhibit->category->name }}</h6>
@@ -22,8 +21,15 @@
 
             <p>{{$exhibit->description}}</p>
 
+            @if($alreadyAnswered)
+            <p class="success">Έχεις ήδη κατακτήσει το <strong>{{ $exhibit->category->badge->name }}</strong> κομμάτι του εγκεφάλου!</p>
+            @endif
+
             <div class="center-align">
-                <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="waves-effect waves-light btn">Πήγαινε στην ερώτηση</a>
+                @if(!$alreadyAnswered)
+                <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="waves-effect waves-light btn">Πηγαινε στην ερωτηση</a>
+                @endif
+                <a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Αλλο εκθεμα</a>
             </div>
         </div>
     </div>

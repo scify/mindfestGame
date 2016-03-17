@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Question;
+use App\Services\QuestionService;
 
 class QuestionController extends Controller {
+
+    private $questionService;
+
+    public function __construct() {
+        $this->questionService = new QuestionService();
+        $this->middleware('auth');
+    }
 
     /**
      * For a certain question, check if the answer is the correct one
@@ -17,23 +25,33 @@ class QuestionController extends Controller {
 
         foreach ($question->answers as $answer) {
             if ($answer->isCorrect && $answer->id == \Request::get('answer'))
-                return null;
+                return [
+                    'hasError' => false,
+                    'questionId' => $id
+                ];
             else if ($answer->isCorrect && $answer->id != \Request::get('answer'))
-                return $question->hint;
+                return [
+                'hasError' => true,
+                'hint' => $question->hint
+            ];
         }
     }
 
 
+    /**
+     * Reward the user for their correct answer
+     *
+     * @param $questionId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function rewardUser($questionId) {
+        $question = $this->questionService->rewardUser($questionId);
+        $isBrainMaster = $this->questionService->isBrainMaster();
 
-        $question = Question::with('category.badge')->find($questionId);
-
-        /*
-        $user = \Auth::user();
-        $user->questions()->associate($questionId);
-        $user->badges()->associate($question->category->badge->id);
-       */
-        return view('awards.badge', compact('question'));
+        if ($isBrainMaster)
+            return view('awards.brainMaster', compact('question'));
+        else
+            return view('awards.badge', compact('question'));
     }
 
 

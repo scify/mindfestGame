@@ -2,13 +2,16 @@
 
 use App\Http\Requests;
 use App\Services\ExhibitService;
+use App\Services\QuestionService;
 
 class ExhibitController extends Controller {
 
     private $exhibitService;
+    private $questionService;
 
     public function __construct() {
         $this->exhibitService = new ExhibitService();
+        $this->questionService = new QuestionService();
         $this->middleware('auth');
     }
 
@@ -20,8 +23,9 @@ class ExhibitController extends Controller {
      */
     public function show($id) {
         $exhibit = $this->exhibitService->getById($id);
+        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->category->question->id);
 
-        return view('exhibits.one', compact('exhibit'));
+        return view('exhibits.one', compact('exhibit', 'alreadyAnswered'));
     }
 
     /**
@@ -40,9 +44,11 @@ class ExhibitController extends Controller {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function question($id) {
+        //check if question has already been answered
         $exhibit = $this->exhibitService->getByIdWithQuestion($id);
+        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->category->question->id);
 
-        return view('exhibits.question', compact('exhibit'));
+        return view('exhibits.question', compact('exhibit', 'alreadyAnswered'));
     }
 
     /**
