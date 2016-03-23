@@ -27,7 +27,6 @@ class AccountController extends Controller {
         try {
             $user = \Socialite::with('facebook')->user();
             $user = $this->accountService->postLogin($user, 'facebook');
-
             return \Redirect::to('exhibits/scanOrCode');
         } catch (\Exception $e) {
             dd($e);
