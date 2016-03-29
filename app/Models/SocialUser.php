@@ -6,7 +6,7 @@ class SocialUser extends Model{
 
     protected $table = 'social_users';
 
-    protected $fillable = ['name', 'nickname', 'email', 'avatar', 'social_media', 'social_id'];
+    protected $fillable = ['name', 'nickname', 'email', 'avatar', 'social_media', 'social_id', 'user_id'];
 
     protected $hidden = ['created_at', 'updated_at'];
 

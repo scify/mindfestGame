@@ -145,7 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Laravel\Socialite\SocialiteServiceProvider::class
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Chencha\Share\ShareServiceProvider::class,
 
     ],
 
@@ -197,7 +198,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Share' => Chencha\Share\ShareFacade::class,
     ],
 
 ];

@@ -40,7 +40,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function socialUser()
     {
-        return $this->hasOne('App\Models\SocialUser', 'users_social_users');
+        return $this->hasOne('App\Models\SocialUser');
     }
 
     public function questions()

@@ -26,10 +26,15 @@
     <div class="row msg">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <h5>Συγχαρητήρια!</h5>
-            <h6>Κατέκτησες την <strong>{{ $question->exhibit->category->badge->name}}</strong> περιοχή του εγκεφάλου</h6>
+            <h6>Κατέκτησες την <strong>{{ $question->exhibit->category->badge->name}}</strong> περιοχή του εγκεφάλου
+            </h6>
             <h5>Είσαι πλέον <strong>Brain Master</strong>!</h5>
-            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
-            <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Δες ξανα αλλο εκθεμα</a></p>
+
+            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το
+                    έκθεμα</a></p>
+
+            <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Δες ξανα αλλο εκθεμα</a>
+            </p>
         </div>
     </div>
 
@@ -40,18 +45,26 @@
         </div>
     </div>
     <div class="row center-align">
-        <div class="col s2 offset-s3 m2 offset-m3 l2 offset-l3">
-            <img src="{{ asset('images/social/facebook.png') }}" class="responsive-img"/>
-        </div>
-        <div class="col s2 m2 offset-m3 l2">
-            <img src="{{ asset('images/social/twitter.png') }}" class="responsive-img"/>
-        </div>
-        <div class="col s2 m2 offset-m3 l2">
-            <img src="{{ asset('images/social/googlePlus.png') }}" class="responsive-img"/>
-        </div>
+            @if($user->socialUser->social_media=='facebook')
+            <div class="col s2 offset-s3 m2 offset-m3 l2 offset-l3">
+                <a href="{{ $shareLink['facebook'] }}" target="_blank">
+                    <img src="{{ asset('images/social/facebook.png') }}" class="responsive-img"/>
+                </a>
+            </div>
+            @elseif($user->socialUser->social_media=='twitter')
+            <div class="col s2 m2 offset-m3 l2">
+                <a href="{{ $shareLink['twitter'] }}" target="_blank">
+                    <img src="{{ asset('images/social/twitter.png') }}" class="responsive-img"/>
+                </a>
+            </div>
+            @elseif($user->socialUser->social_media=='google')
+            <div class="col s2 m2 offset-m3 l2">
+                <a href="{{ $shareLink['google'] }}" target="_blank">
+                    <img src="{{ asset('images/social/googlePlus.png') }}" class="responsive-img"/>
+                </a>
+            </div>
+            @endif
     </div>
-
-
 </div>
 
 

@@ -21,16 +21,12 @@ class CreateSocialUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('social_media')->nullable();
 
-            $table->timestamps();
-        });
-
-        Schema::create('users_social_users', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->integer('social_user_id')->unsigned();
-            $table->foreign('social_user_id')->references('id')->on('social_users');
+            $table->timestamps();
         });
+
     }
 
     /**
@@ -39,7 +35,6 @@ class CreateSocialUsersTable extends Migration
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('users_social_users');
         Schema::dropIfExists('social_users');
     }
 }

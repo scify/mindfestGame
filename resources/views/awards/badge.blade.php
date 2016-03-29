@@ -19,15 +19,19 @@
 <div class="container award center-align">
     <div class="row">
         <div class="col s12 m6 offset-m3 l6 offset-l3 logo">
-            <img src="{{ asset('images/badges/'.$question->exhibit->category->badge->image_name) }}" class="responsive-img"/>
+            <img src="{{ asset('images/badges/'.$question->exhibit->category->badge->image_name) }}"
+                 class="responsive-img"/>
         </div>
     </div>
 
     <div class="row msg">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <h5>Συγχαρητήρια!</h5>
-            <h6>Κατέκτησες την <strong>{{ $question->exhibit->category->badge->name}}</strong> περιοχή του εγκεφάλου</h6>
+            <h6>Κατέκτησες την <strong>{{ $question->exhibit->category->badge->name}}</strong> περιοχή του εγκεφάλου
+            </h6>
+
             <p><a href="#">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
+
             <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Συνεχισε</a></p>
         </div>
     </div>
@@ -39,15 +43,25 @@
         </div>
     </div>
     <div class="row center-align">
-        <div class="col s2 offset-s3 m2 offset-m3 l2 offset-l3">
-            <img src="{{ asset('images/social/facebook.png') }}" class="responsive-img"/>
+        @if($user->socialUser->social_media=='facebook')
+        <div class="col s2  m2 l2">
+            <a href="{{ $shareLink['facebook'] }}" target="_blank">
+                <img src="{{ asset('images/social/facebook.png') }}" class="responsive-img"/>
+            </a>
         </div>
-        <div class="col s2 m2 offset-m3 l2">
+        @elseif($user->socialUser->social_media=='twitter')
+        <div class="col s2  m2 l2 center-align">
+            <a href="{{ $shareLink['twitter'] }}" target="_blank">
             <img src="{{ asset('images/social/twitter.png') }}" class="responsive-img"/>
+            </a>
         </div>
+        @elseif($user->socialUser->social_media=='google')
         <div class="col s2 m2 offset-m3 l2">
+            <a href="{{ $shareLink['google'] }}" target="_blank">
             <img src="{{ asset('images/social/googlePlus.png') }}" class="responsive-img"/>
+            </a>
         </div>
+        @endif
     </div>
 
 

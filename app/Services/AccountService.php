@@ -11,14 +11,14 @@ class AccountService {
         $socialUser = SocialUser::where('social_id', $loggedInUser->getId())->first();
 
         if ($socialUser == null) {
-            $socialUser = $this->saveSocialUser($loggedInUser, $socialMedia);
-            $user = $this->saveUser($socialUser);
+            $user = $this->saveUser($loggedInUser);
+            $socialUser = $this->saveSocialUser($loggedInUser, $socialMedia, $user->id);
             \Auth::login($user);
         } else {
             $user = User::where('email', $loggedInUser->email)->first();
             if ($user != null)
                 \Auth::login($user);
-            else{
+            else {
                 $user = $this->saveUser($socialUser);
                 \Auth::login($user);
             }
@@ -34,11 +34,12 @@ class AccountService {
      * @return static
      */
     public function saveUser($loggedInUser) {
-        $user = User::create([
+        $user = new User([
             'name' => $loggedInUser->name,
             'email' => $loggedInUser->email,
             'password' => bcrypt(substr($loggedInUser->token, 0, 10))
         ]);
+        $user->save();
 
         return $user;
     }
@@ -50,7 +51,7 @@ class AccountService {
      * @param $socialMedia
      * @return SocialUser
      */
-    public function saveSocialUser($socialUser, $socialMedia) {
+    public function saveSocialUser($socialUser, $socialMedia, $userId) {
         //check if the user already exists
         $user = SocialUser::where('social_id', $socialUser->getId())->first();
 
@@ -62,6 +63,7 @@ class AccountService {
                 'email' => $socialUser->email,
                 'avatar' => $socialUser->avatar,
                 'social_media' => $socialMedia,
+                'user_id' => $userId,
             ]);
             $user->save();
         }

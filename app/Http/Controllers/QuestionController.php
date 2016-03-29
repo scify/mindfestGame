@@ -31,9 +31,9 @@ class QuestionController extends Controller {
                 ];
             else if ($answer->isCorrect && $answer->id != \Request::get('answer'))
                 return [
-                'hasError' => true,
-                'hint' => $question->hint
-            ];
+                    'hasError' => true,
+                    'hint' => $question->hint
+                ];
         }
     }
 
@@ -48,10 +48,23 @@ class QuestionController extends Controller {
         $question = $this->questionService->rewardUser($questionId);
         $isBrainMaster = $this->questionService->isBrainMaster();
 
+        $user = \Auth::user();
+        $user->socialUser;
+
+        $socialUrl = 'http://www.example.com';
+        $socialDescr = 'Link description';
+
+        if ($user->socialUser->social_media == 'facebook')
+            $shareLink = \Share::load($socialUrl, $socialDescr)->services('facebook');
+        else  if ($user->socialUser->social_media == 'twitter')
+            $shareLink = \Share::load($socialUrl, $socialDescr)->services('twitter');
+        else  if ($user->socialUser->social_media == 'google')
+            $shareLink = \Share::load($socialUrl, $socialDescr)->services('gplus');
+
         if ($isBrainMaster)
-            return view('awards.brainMaster', compact('question'));
+            return view('awards.brainMaster', compact('question', 'shareLink', 'user'));
         else
-            return view('awards.badge', compact('question'));
+            return view('awards.badge', compact('question', 'shareLink', 'user'));
     }
 
 

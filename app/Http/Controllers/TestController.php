@@ -14,11 +14,12 @@ class TestController extends Controller
     public function test()
     {
 
-        return \Request::all();
+        $user = \Auth::user();
 
-        $user = \Socialite::with('facebook')->user();
+        return $user->socialUser;
 
-        return $user;
+        $share = \Share::load('http://www.example.com', 'Link description')->services('facebook', 'gplus', 'twitter');
+        return $share;
     }
 
 }

@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('exhibits/scanOrCode', 'ExhibitController@scanOrCode');
 Route::get('exhibits/getByCode', 'ExhibitController@getByCode');
 Route::get('exhibits/{id}', 'ExhibitController@show');
@@ -23,6 +19,7 @@ Route::get('questions/{id}/checkAnswer', 'QuestionController@checkAnswer');
 Route::get('reward/{questionId}', 'QuestionController@rewardUser');
 
 
+Route::get('/', 'AccountController@login');
 Route::get('auth/login', 'AccountController@login');
 
 
