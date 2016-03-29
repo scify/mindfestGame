@@ -34,7 +34,7 @@ class QuestionService {
      */
     public function rewardUser($questionId) {
 
-        $question = Question::with('category.badge')->find($questionId);
+        $question = Question::with('exhibit.category.badge')->find($questionId);
         $user = \Auth::user();
         $user->load('questions');
 
@@ -48,7 +48,7 @@ class QuestionService {
 
         if (!$flag) {
             $user->questions()->attach($questionId);
-            $user->badges()->attach($question->category->badge->id);
+            $user->badges()->attach($question->exhibit->category->badge->id);
         }
 
         return $question;

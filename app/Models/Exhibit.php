@@ -15,4 +15,9 @@ class Exhibit extends Model{
     {
         return $this->belongsTo('App\Models\Category');
     }
+
+    public function question()
+    {
+        return $this->hasOne('App\Models\Question');
+    }
 }

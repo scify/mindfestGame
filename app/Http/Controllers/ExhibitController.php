@@ -23,7 +23,7 @@ class ExhibitController extends Controller {
      */
     public function show($id) {
         $exhibit = $this->exhibitService->getById($id);
-        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->category->question->id);
+        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->question->id);
 
         return view('exhibits.one', compact('exhibit', 'alreadyAnswered'));
     }
@@ -46,7 +46,7 @@ class ExhibitController extends Controller {
     public function question($id) {
         //check if question has already been answered
         $exhibit = $this->exhibitService->getByIdWithQuestion($id);
-        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->category->question->id);
+        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->question->id);
 
         return view('exhibits.question', compact('exhibit', 'alreadyAnswered'));
     }

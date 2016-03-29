@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_ID'),
         'client_secret' => env('FACEBOOK_SECRET'),
-        'redirect' => 'http://192.168.1.15/mindFestGame/public/account/facebook',
+        'redirect' => 'http://mindfest.org/mindfestGame/public/account/facebook',
     ],
 
     'twitter' => [
@@ -50,7 +50,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLEPLUS_ID'),
         'client_secret' => env('GOOGLEPLUS_SECRET'),
-        'redirect' => 'http://192.168.1.15/mindFestGame/public/account/googlePlus',
+        'redirect' => 'http://mindfest.org/mindfestGame/public/account/googlePlus',
     ],
 
 

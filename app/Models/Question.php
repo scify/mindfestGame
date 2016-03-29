@@ -6,9 +6,9 @@ class Question extends Model{
 
     protected $table = 'questions';
 
-    protected $fillable = ['name', 'description', 'category_id'];
+    protected $fillable = ['name', 'description', 'exhibit_id'];
 
-    protected $hidden = ['created_at', 'updated_at', 'category_id'];
+    protected $hidden = ['created_at', 'updated_at', 'exhibit_id'];
 
 
     public function answers()
@@ -22,8 +22,8 @@ class Question extends Model{
         return $this->hasOne('App\Models\Hint');
     }
 
-    public function category()
+    public function exhibit()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Models\Exhibit');
     }
 }

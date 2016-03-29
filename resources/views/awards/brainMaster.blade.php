@@ -26,9 +26,9 @@
     <div class="row msg">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <h5>Συγχαρητήρια!</h5>
-            <h6>Κατέκτησες την <strong>{{ $question->category->badge->name}}</strong> περιοχή του εγκεφάλου</h6>
+            <h6>Κατέκτησες την <strong>{{ $question->exhibit->category->badge->name}}</strong> περιοχή του εγκεφάλου</h6>
             <h5>Είσαι πλέον <strong>Brain Master</strong>!</h5>
-            <p><a href="#">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
+            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
             <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Δες ξανα αλλο εκθεμα</a></p>
         </div>
     </div>

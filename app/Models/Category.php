@@ -16,11 +16,6 @@ class Category extends Model{
         return $this->hasMany('App\Models\Exhibit');
     }
 
-    public function question()
-    {
-        return $this->hasOne('App\Models\Question');
-    }
-
     public function badge()
     {
         return $this->hasOne('App\Models\Badge');

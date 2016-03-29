@@ -15,8 +15,8 @@ class CreateQuestionsAnswersTable extends Migration {
             $table->string('name')->nullable();
             $table->string('description', 1000);
 
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('exhibit_id')->unsigned();
+            $table->foreign('exhibit_id')->references('id')->on('exhibits');
 
             $table->timestamps();
         });

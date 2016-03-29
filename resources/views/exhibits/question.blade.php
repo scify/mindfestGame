@@ -28,10 +28,10 @@
             <p>Έχεις ήδη κατακτήσει το <strong>{{ $exhibit->category->badge->name }}</strong> κομμάτι του εγκεφάλου!</p>
 
             @else
-            <p id="questionId" data-question-id="{{ $exhibit->category->question->id }}"><strong>{{
-                    $exhibit->category->question->description }}</strong></p>
+            <p id="questionId" data-question-id="{{ $exhibit->question->id }}"><strong>{{
+                    $exhibit->question->description }}</strong></p>
 
-            @foreach($exhibit->category->question->answers as $i => $answer)
+            @foreach($exhibit->question->answers as $i => $answer)
             <p><input name="answers[]" type="radio" value="{{ $answer->id }}" id="answer-{{$i}}"/>
                 <label for="answer-{{$i}}">{{ $answer->description }}</label>
             </p>
