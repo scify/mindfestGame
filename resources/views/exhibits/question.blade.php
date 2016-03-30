@@ -7,15 +7,13 @@
 @section('bodyContent')
 
 <div class="exhibit question">
+    @if($exhibit->image_name!=null && $exhibit->image_name!="")
     <div class="row">
-        <div class="col s12 m6 offset-m3 l6 offset-l3 center-align">
-            {{--
-            <div class="img"
-                 style="background: url('{{ URL::to('/images') }}/{{$exhibit->image_name}}') no-repeat; background-size: 100%;"></div>
-            --}}
-            <img src="{{ URL::to('/images') }}/{{$exhibit->image_name}}" class="responsive-img">
+        <div class="col s12  m6 offset-m3 l6 offset-l3 center-align">
+            <img src="{{ URL::to('/images') }}/{{$exhibit->image_name}}" class="responsive-img center-align">
         </div>
     </div>
+    @endif
     <div class="row info">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <p></p>
