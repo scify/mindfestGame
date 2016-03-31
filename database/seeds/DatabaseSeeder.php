@@ -1,13 +1,13 @@
 <?php
 
+use App\Models\Answer;
+use App\Models\Badge;
+use App\Models\Category;
+use App\Models\Exhibit;
+use App\Models\Hint;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
-use \App\Models\Category;
-use \App\Models\Badge;
-use \App\Models\Exhibit;
-use \App\Models\Question;
-use \App\Models\Answer;
-use \App\Models\Hint;
 
 class DatabaseSeeder extends Seeder {
     /**
@@ -45,9 +45,12 @@ class DatabaseSeeder extends Seeder {
         $data = json_decode($json);
 
         //create the category
-        $category= new Category(['name' => $data->category->name]);
+        $category = new Category(['name' => $data->category->name]);
         $category->save();
-        $category->badge()->save(new Badge(['image_name' => $data->category->image_name]));
+            $category->badge()->save(new Badge([
+                'name' => $data->category->badge->name,
+                'image_name' => $data->category->badge->image_name
+            ]));
 
         //create the exhibits and the questions
         foreach ($data->category->exhibits as $exhibit) {

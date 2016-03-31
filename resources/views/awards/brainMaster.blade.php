@@ -16,10 +16,10 @@
 <body data-url="{!! URL::to('/') !!}">
 
 
-<div class="container award center-align">
+<div class="container award center-align ">
     <div class="row">
-        <div class="col s12 m6 offset-m3 l6 offset-l3 logo">
-            <img src="{{ asset('images/badges/brainMaster.png') }}" class="responsive-img"/>
+        <div class="col s12 m6 offset-m3 l6 offset-l3 ">
+            <img src="{{ asset('images/badges/brainMaster.png') }}" class="responsive-img square-logo"/>
         </div>
     </div>
 
@@ -30,8 +30,7 @@
             </h6>
             <h5>Είσαι πλέον <strong>Brain Master</strong>!</h5>
 
-            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το
-                    έκθεμα</a></p>
+            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
 
             <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Δες ξανα αλλο εκθεμα</a>
             </p>
@@ -44,26 +43,20 @@
             <p>Μοιράσου την επιτυχία σου στα social media!</p>
         </div>
     </div>
-    <div class="row center-align">
-            @if($user->socialUser->social_media=='facebook')
-            <div class="col s2 offset-s3 m2 offset-m3 l2 offset-l3">
-                <a href="{{ $shareLink['facebook'] }}" target="_blank">
-                    <img src="{{ asset('images/social/facebook.png') }}" class="responsive-img"/>
-                </a>
-            </div>
-            @elseif($user->socialUser->social_media=='twitter')
-            <div class="col s2 m2 offset-m3 l2">
-                <a href="{{ $shareLink['twitter'] }}" target="_blank">
-                    <img src="{{ asset('images/social/twitter.png') }}" class="responsive-img"/>
-                </a>
-            </div>
-            @elseif($user->socialUser->social_media=='google')
-            <div class="col s2 m2 offset-m3 l2">
-                <a href="{{ $shareLink['google'] }}" target="_blank">
-                    <img src="{{ asset('images/social/googlePlus.png') }}" class="responsive-img"/>
-                </a>
-            </div>
-            @endif
+    <div class="center-align">
+        @if($user->socialUser->social_media=='facebook')
+        <a href="{{ $shareLink['facebook'] }}" target="_blank">
+            <img src="{{ asset('images/social/facebook.png') }}" class="responsive-img"/>
+        </a>
+        @elseif($user->socialUser->social_media=='twitter')
+        <a href="{{ $shareLink['twitter'] }}" target="_blank">
+            <img src="{{ asset('images/social/twitter.png') }}" class="responsive-img"/>
+        </a>
+        @elseif($user->socialUser->social_media=='google')
+        <a href="{{ $shareLink['google'] }}" target="_blank">
+            <img src="{{ asset('images/social/googlePlus.png') }}" class="responsive-img"/>
+        </a>
+        @endif
     </div>
 </div>
 

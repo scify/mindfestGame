@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Question;
+use App\Services\AccountService;
 use App\Services\QuestionService;
 
 class QuestionController extends Controller {
 
     private $questionService;
+    private $accountService;
 
     public function __construct() {
         $this->questionService = new QuestionService();
+        $this->accountService = new AccountService();
         $this->middleware('auth');
     }
 
@@ -49,22 +52,16 @@ class QuestionController extends Controller {
         $isBrainMaster = $this->questionService->isBrainMaster();
 
         $user = \Auth::user();
-        $user->socialUser;
+        $shareLink = $this->accountService->getSocialPost($user, $isBrainMaster, $question->exhibit->category->badge);
 
-        $socialUrl = 'http://www.example.com';
-        $socialDescr = 'Link description';
-
-        if ($user->socialUser->social_media == 'facebook')
-            $shareLink = \Share::load($socialUrl, $socialDescr)->services('facebook');
-        else  if ($user->socialUser->social_media == 'twitter')
-            $shareLink = \Share::load($socialUrl, $socialDescr)->services('twitter');
-        else  if ($user->socialUser->social_media == 'google')
-            $shareLink = \Share::load($socialUrl, $socialDescr)->services('gplus');
+        $badges=[];
+        if ($question->exhibit->category->badge->image_name != null && $question->exhibit->category->badge->image_name != "")
+            $badges = $this->accountService->getBadges($user);
 
         if ($isBrainMaster)
             return view('awards.brainMaster', compact('question', 'shareLink', 'user'));
         else
-            return view('awards.badge', compact('question', 'shareLink', 'user'));
+            return view('awards.badge', compact('question', 'shareLink', 'user', 'badges'));
     }
 
 

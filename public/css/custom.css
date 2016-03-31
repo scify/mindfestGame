@@ -1,3 +1,4 @@
+
 .row {
     margin-bottom: 0;
 }
@@ -46,7 +47,7 @@ label{
 }
 
 .login, .award {
-    margin-top:5%;
+    margin-top:1%;
 }
 
 .login .logo img, .scanOrCode .logo img{
@@ -75,4 +76,25 @@ label{
 
 .award .social img{
     width:100%;
+}
+
+.square-logo{
+    width:40%;
+}
+
+.badges{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+}
+
+.baseBadge{
+    position: absolute; z-index: 1;
+    left:0;
+}
+.overlayBadge {
+    position: absolute;
+    z-index: 2;
+    left: 0;
 }

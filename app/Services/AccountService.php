@@ -1,6 +1,7 @@
 <?php namespace App\Services;
 
 
+use App\Models\Category;
 use App\Models\SocialUser;
 use App\Models\User;
 
@@ -69,5 +70,53 @@ class AccountService {
         }
 
         return $user;
+    }
+
+
+    /**
+     * Get the social post for the social media
+     *
+     * @param $user
+     * @param $isBrainMaster
+     * @param $badge
+     * @return mixed
+     */
+    public function getSocialPost($user, $isBrainMaster, $badge) {
+        $socialUrl = 'http://mindfest.org/';
+
+        if ($isBrainMaster)
+            $socialDescr = 'Μόλις κατέκτησα την ' . $badge->name . ' περιοχή του εγκεφάλου και είμαι πλέον Brain Master!';
+        else
+            $socialDescr = 'Μόλις κατέκτησα την ' . $badge->name . ' περιοχή του εγκεφάλου!';
+
+        if ($user->socialUser->social_media == 'facebook')
+            $shareLink = \Share::load($socialUrl, $socialDescr)->services('facebook');
+        else if ($user->socialUser->social_media == 'twitter')
+            $shareLink = \Share::load($socialUrl, $socialDescr)->services('twitter');
+        else if ($user->socialUser->social_media == 'google')
+            $shareLink = \Share::load($socialUrl, $socialDescr)->services('gplus');
+
+        return $shareLink;
+    }
+
+    /**
+     * Get all the badge image names for a user
+     *
+     * @param $user
+     * @return array
+     */
+    public function getBadges($user) {
+        $user->load('badges');
+
+        $categories = Category::has('badge')->get();
+
+        $badges = [];
+
+        foreach ($categories as $category) {
+            if (in_array($category->badge->image_name != null && $category->badge->image_name != "" && $category->badge->id, $user->badges->lists('id')->toArray()))
+                array_push($badges, $category->badge->image_name);
+        }
+
+        return $badges;
     }
 }

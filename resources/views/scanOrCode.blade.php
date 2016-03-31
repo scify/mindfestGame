@@ -19,7 +19,7 @@
 <div class="container scanOrCode center-align">
     <div class="row">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
-            <img src="{{ asset('images/square_logo.png') }}"/>
+            <img src="{{ asset('images/square_logo.png') }}" class="responsive-img square-logo"/>
         </div>
     </div>
 

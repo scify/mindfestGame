@@ -53,16 +53,18 @@ class QuestionService {
         if (!$flag) {
             $user->questions()->attach($questionId);
 
-            //then check id the badge has been attached to user
-            foreach ($user->badges as $b) {
-                if ($b->id == $question->exhibit->category->badge->id) {
-                    $flag = true;
-                    break;
+            if ($question->exhibit->category->badge->id != null && $question->exhibit->category->badge->id != "") {
+                //then check id the badge has been attached to user
+                foreach ($user->badges as $b) {
+                    if ($b->id == $question->exhibit->category->badge->id) {
+                        $flag = true;
+                        break;
+                    }
                 }
+                //if not, attach it
+                if (!$flag)
+                    $user->badges()->attach($question->exhibit->category->badge->id);
             }
-            //if not, attach it
-            if (!$flag)
-                $user->badges()->attach($question->exhibit->category->badge->id);
         }
 
         return $question;
