@@ -23,7 +23,7 @@
             <h4 class="title">{{ $exhibit->name }} </h4>
 
             @if($alreadyAnswered)
-            <p>Έχεις ήδη κατακτήσει το <strong>{{ $exhibit->category->badge->name }}</strong> κομμάτι του εγκεφάλου!</p>
+            <p>Έχεις απαντήσει ήδη στην ερώτηση!</p>
 
             @else
             <p id="questionId" data-question-id="{{ $exhibit->question->id }}"><strong>{{
@@ -39,7 +39,7 @@
             @endif
 
             <div class="right-align">
-                <p><a href="{{ url('exhibits/'.$exhibit->id) }}">Πίσω στο έκθεμα</a></p>
+                <p><a href="{{ url('exhibits/'.$exhibit->code) }}">Πίσω στο έκθεμα</a></p>
             </div>
         </div>
     </div>

@@ -13,8 +13,8 @@
 
 Route::get('exhibits/scanOrCode', 'ExhibitController@scanOrCode');
 Route::get('exhibits/getByCode', 'ExhibitController@getByCode');
-Route::get('exhibits/{id}', 'ExhibitController@show');
-Route::get('exhibits/{id}/question', 'ExhibitController@question');
+Route::get('exhibits/{code}', 'ExhibitController@show');
+Route::get('exhibits/{code}/question', 'ExhibitController@question');
 Route::get('questions/{id}/checkAnswer', 'QuestionController@checkAnswer');
 Route::get('reward/{questionId}', 'QuestionController@rewardUser');
 

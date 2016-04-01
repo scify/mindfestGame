@@ -26,11 +26,15 @@
     <div class="row msg">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <h5>Συγχαρητήρια!</h5>
-            <h6>Κατέκτησες την <strong>{{ $question->exhibit->category->badge->name}}</strong> περιοχή του εγκεφάλου
-            </h6>
+            @if($question->exhibit->category->badge->name=='auditory')
+            <h6>Απάντησες σωστά στην ερώτηση της κατηγορίας "Ακοή"!</h6>
+            @else
+            <h6>Ξεκλείδωσες {{ $question->exhibit->category->badge->name}} του εγκεφάλου σου!</h6>
+            @endif
             <h5>Είσαι πλέον <strong>Brain Master</strong>!</h5>
 
-            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το έκθεμα</a></p>
+            <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το
+                    έκθεμα "{{ $question->exhibit->name }}"</a></p>
 
             <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Δες ξανα αλλο εκθεμα</a>
             </p>
@@ -52,8 +56,8 @@
         <a href="{{ $shareLink['twitter'] }}" target="_blank">
             <img src="{{ asset('images/social/twitter.png') }}" class="responsive-img"/>
         </a>
-        @elseif($user->socialUser->social_media=='google')
-        <a href="{{ $shareLink['google'] }}" target="_blank">
+        @elseif($user->socialUser->social_media=='googlePlus')
+        <a href="{{ $shareLink['gplus'] }}" target="_blank">
             <img src="{{ asset('images/social/googlePlus.png') }}" class="responsive-img"/>
         </a>
         @endif

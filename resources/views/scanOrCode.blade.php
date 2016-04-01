@@ -63,7 +63,7 @@
                 },
                 success: function (data) {
                     if (data) {
-                        window.location.href = $("body").attr('data-url') + "/exhibits/" + data.id;
+                        window.location.href = $("body").attr('data-url') + "/exhibits/" + data.code;
                     }
                     else {
                         $("#error").html("<small>Δεν υπάρχει έκθεμα με αυτόν τον κωδικό!</small>");

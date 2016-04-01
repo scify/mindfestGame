@@ -83,18 +83,22 @@ class AccountService {
      */
     public function getSocialPost($user, $isBrainMaster, $badge) {
         $socialUrl = 'http://mindfest.org/';
+        $shareLink = '';
 
-        if ($isBrainMaster)
-            $socialDescr = 'Μόλις κατέκτησα την ' . $badge->name . ' περιοχή του εγκεφάλου και είμαι πλέον Brain Master!';
-        else
-            $socialDescr = 'Μόλις κατέκτησα την ' . $badge->name . ' περιοχή του εγκεφάλου!';
 
-        if ($user->socialUser->social_media == 'facebook')
-            $shareLink = \Share::load($socialUrl, $socialDescr)->services('facebook');
-        else if ($user->socialUser->social_media == 'twitter')
-            $shareLink = \Share::load($socialUrl, $socialDescr)->services('twitter');
-        else if ($user->socialUser->social_media == 'google')
-            $shareLink = \Share::load($socialUrl, $socialDescr)->services('gplus');
+        if ($badge->name == 'auditory') {
+            if ($isBrainMaster)
+                $socialDescr = 'Απάντηση σωστά στην ερώτηση της κατηγορίας "Ακοή" και είμαι πλέον Brain Master!';
+            else
+                $socialDescr = 'Απάντηση σωστά στην ερώτηση της κατηγορίας "Ακοή"!';
+        } else {
+            if ($isBrainMaster)
+                $socialDescr = 'Μόλις ξεκλείδωσα ' . $badge->name . ' του εγκεφάλου μου και είμαι πλέον Brain Master!';
+            else
+                $socialDescr = 'Μόλις ξεκλείδωσα ' . $badge->name . ' του εγκεφάλου μου!';
+        }
+
+        $shareLink = \Share::load($socialUrl, $socialDescr)->services('facebook', 'twitter', 'gplus');
 
         return $shareLink;
     }
@@ -113,7 +117,7 @@ class AccountService {
         $badges = [];
 
         foreach ($categories as $category) {
-            if (in_array($category->badge->image_name != null && $category->badge->image_name != "" && $category->badge->id, $user->badges->lists('id')->toArray()))
+            if ($category->badge->image_name != null && $category->badge->image_name != "" && in_array($category->badge->id, $user->badges->lists('id')->toArray()))
                 array_push($badges, $category->badge->image_name);
         }
 

@@ -29,9 +29,9 @@
 
             <div class="center-align">
                 @if(!$alreadyAnswered)
-                <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="waves-effect waves-light btn">Πηγαινε στην ερωτηση</a>
+                <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="waves-effect waves-light btn margin-bottom">Πηγαινε στην ερωτηση</a>
                 @endif
-                <a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Αλλο εκθεμα</a>
+                <a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn margin-bottom">Αλλο εκθεμα</a>
             </div>
         </div>
     </div>

@@ -18,11 +18,11 @@ class ExhibitController extends Controller {
     /**
      * Show an exhibit by id
      *
-     * @param $id
+     * @param $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id) {
-        $exhibit = $this->exhibitService->getById($id);
+    public function show($code) {
+        $exhibit = $this->exhibitService->getByCode($code);
         $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($exhibit->question->id);
 
         return view('exhibits.one', compact('exhibit', 'alreadyAnswered'));
