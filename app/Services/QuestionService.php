@@ -16,14 +16,12 @@ class QuestionService {
         $user = \Auth::user();
         $user->load('questions');
 
-        $flag = false;
         foreach ($user->questions as $question) {
             if ($question->id == $questionId) {
-                $flag = true;
-                break;
+                return true;
             }
         }
-        return $flag;
+        return false;
     }
 
     /**
@@ -82,6 +80,7 @@ class QuestionService {
         $categories = Category::all()->count();
         $user = \Auth::user();
         $user->load('badges');
+        $user->update(['is_brain_master' => true]);
 
         if ($categories == sizeof($user->badges))
             return true;

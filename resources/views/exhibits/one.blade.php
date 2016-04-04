@@ -23,14 +23,8 @@
 
             <p>{!! $exhibit->description !!}</p>
 
-            @if($alreadyAnswered)
-            <p class="success">Έχεις ήδη απαντήσει σε αυτή την ερώτηση!</p>
-            @endif
-
             <div class="center-align">
-                @if(!$alreadyAnswered)
                 <a href="{{ url('exhibits/'.$exhibit->id.'/question') }}" class="waves-effect waves-light btn margin-bottom">Πηγαινε στην ερωτηση</a>
-                @endif
                 <a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn margin-bottom">Αλλο εκθεμα</a>
             </div>
         </div>

@@ -48,6 +48,11 @@ class QuestionController extends Controller {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function rewardUser($questionId) {
+        $user = \Auth::user();
+        $alreadyBrainMaster = $user->is_brain_master;
+        $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($questionId);
+       // return 'alreadyBrainMaster '.$alreadyBrainMaster .' alreadyAnswered '. $alreadyAnswered;
+
         $question = $this->questionService->rewardUser($questionId);
         $isBrainMaster = $this->questionService->isBrainMaster();
 
@@ -59,9 +64,9 @@ class QuestionController extends Controller {
             $badges = $this->accountService->getBadges($user);
 
         if ($isBrainMaster)
-            return view('awards.brainMaster', compact('question', 'shareLink', 'user'));
+            return view('awards.brainMaster', compact('question', 'shareLink', 'user', 'badges', 'alreadyAnswered', 'alreadyBrainMaster'));
         else
-            return view('awards.badge', compact('question', 'shareLink', 'user', 'badges'));
+            return view('awards.badge', compact('question', 'shareLink', 'user', 'badges', 'alreadyAnswered'));
     }
 
 

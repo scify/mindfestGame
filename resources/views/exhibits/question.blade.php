@@ -22,10 +22,6 @@
 
             <h4 class="title">{{ $exhibit->name }} </h4>
 
-            @if($alreadyAnswered)
-            <p>Έχεις απαντήσει ήδη στην ερώτηση!</p>
-
-            @else
             <p id="questionId" data-question-id="{{ $exhibit->question->id }}"><strong>{{
                     $exhibit->question->description }}</strong></p>
 
@@ -36,7 +32,6 @@
             @endforeach
 
             <p class="error" id="hint" style="display:none;"></p>
-            @endif
 
             <div class="right-align">
                 <p><a href="{{ url('exhibits/'.$exhibit->code) }}">Πίσω στο έκθεμα</a></p>
