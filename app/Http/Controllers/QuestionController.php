@@ -51,7 +51,9 @@ class QuestionController extends Controller {
         $user = \Auth::user();
         $alreadyBrainMaster = $user->is_brain_master;
         $alreadyAnswered = $this->questionService->checkIfAlreadyAnswered($questionId);
-       // return 'alreadyBrainMaster '.$alreadyBrainMaster .' alreadyAnswered '. $alreadyAnswered;
+
+        $question = Question::with('exhibit.category.badge')->find($questionId);
+        $hasBadgeAlready = $this->questionService->hasBadgeAlready($question->exhibit->category->badge->id);
 
         $question = $this->questionService->rewardUser($questionId);
         $isBrainMaster = $this->questionService->isBrainMaster();
@@ -66,7 +68,7 @@ class QuestionController extends Controller {
         if ($isBrainMaster)
             return view('awards.brainMaster', compact('question', 'shareLink', 'user', 'badges', 'alreadyAnswered', 'alreadyBrainMaster'));
         else
-            return view('awards.badge', compact('question', 'shareLink', 'user', 'badges', 'alreadyAnswered'));
+            return view('awards.badge', compact('question', 'shareLink', 'user', 'badges', 'alreadyAnswered', 'hasBadgeAlready'));
     }
 
 

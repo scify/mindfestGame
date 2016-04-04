@@ -31,8 +31,8 @@
 
     <div class="row msg">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
-            @if($alreadyAnswered)
-            @if($question->exhibit->category->badge->name=='auditory')
+            @if($alreadyAnswered || $hasBadgeAlready)
+                @if($question->exhibit->category->badge->name=='auditory')
                  <h6>Έχεις ήδη απαντήσει σωστά στην ερώτηση!</h6>
                 @else
                  <h6>Έχεις ήδη ξεκλειδώσει {{ $question->exhibit->category->badge->name}} του εγκεφάλου σου!</h6>

@@ -86,4 +86,20 @@ class QuestionService {
             return true;
         else return false;
     }
+
+    /**
+     * Check if user has already the category badge
+     *
+     * @param $badgeId
+     * @return bool
+     */
+    public function hasBadgeAlready($badgeId) {
+        $user = \Auth::user();
+        $user->load('badges');
+
+        if (in_array($badgeId, $user->badges->lists('id')->toArray()))
+            return true;
+        else
+            return false;
+    }
 }
