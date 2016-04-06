@@ -2,14 +2,14 @@
     "category": {
         "name": "Γεύση",
         "badge": {
-            "name": "τον κροταφικο λοβό",
-            "image_name": "taste_badge.png"
+            "name": "taste",
+            "image_name": ""
         },
         "exhibits": [
             {
                 "name": "Πλάνη χρώματος – γεύσης",
                 "code": "color-taste-illusion",
-                "site_url": "http://mindfest.org/%cf%80%ce%bb%ce%ac%ce%bd%ce%b7-%cf%87%cf%81%cf%8e%ce%bc%ce%b1%cf%84%ce%bf%cf%82-%ce%b3%ce%b5%cf%8d%cf%83%ce%b7%cf%82-color-taste-illusion/",
+                "site_url": "http://mindfest.org/%CF%80%CE%BB%CE%AC%CE%BD%CE%B7-%CF%87%CF%81%CF%8E%CE%BC%CE%B1%CF%84%CE%BF%CF%82-%CE%B3%CE%B5%CF%8D%CF%83%CE%B7%CF%82-color-taste-illusion-2/",
                 "image_name": "",
                 "description": "<p><strong>Τι είναι;</strong> Πιστεύεις ότι μόνο με τη γλώσσα γεύεσαι το φαγητό σου;</p><p><strong>Πώς γίνεται;</strong> Το χρώμα που κοιτάς όταν τρως, μπορεί να επηρεάσει τη γεύση σου!</p><p><strong>Γιατί συμβαίνει;</strong> Η τελική αίσθηση της γεύσης ενός φαγητού είναι μια διαδικασία που συμμετέχουν όλες οι αισθήσεις, εκτός από την ίδια τη γεύση. Η όραση, όντας μια ιδιαίτερα ισχυρή αίσθηση, μπορεί να μεταβάλλει σημαντικά την αίσθηση της γεύσης.</p><p><strong>Ήξερες ότι:</strong> Το φαινόμενο αυτό μπορεί να χρησιμοποιηθεί για να βελτιώσει τη γεύση κάποιων τροφίμων, προσθέτοντας για παράδειγμα χρωστικές ουσίες;</p>",
                 "question": "Το χρώμα ενός φαγητού επηρεάζει τη γεύση του γιατί:",

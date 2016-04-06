@@ -32,22 +32,24 @@
     <div class="row msg">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             @if($alreadyAnswered || $hasBadgeAlready)
-                @if($question->exhibit->category->badge->name=='auditory')
+                @if($question->exhibit->category->badge->name=='taste')
                  <h6>Έχεις ήδη απαντήσει σωστά στην ερώτηση!</h6>
                 @else
                  <h6>Έχεις ήδη ξεκλειδώσει {{ $question->exhibit->category->badge->name}} του εγκεφάλου σου!</h6>
                 @endif
             @else
             <h5>Συγχαρητήρια!</h5>
-            @if($question->exhibit->category->badge->name=='auditory')
+            @if($question->exhibit->category->badge->name=='taste')
                  <h6>Απάντησες σωστά στην ερώτηση!</h6>
             @else
                   <h6>Ξεκλείδωσες {{ $question->exhibit->category->badge->name}} του εγκεφάλου σου!</h6>
             @endif
             @endif
 
+            @if($question->exhibit->site_url!=null && $question->exhibit->site_url!="")
             <p><a href="{{ $question->exhibit->site_url }}" target="_blank">Μάθε περισσότερες πληροφορίες για το
                     έκθεμα "{{ $question->exhibit->name }}"</a></p>
+            @endif
 
             <p><a href="{{ url('exhibits/scanOrCode') }}" class="waves-effect waves-light btn">Συνεχισε</a></p>
         </div>
